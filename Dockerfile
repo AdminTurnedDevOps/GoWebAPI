@@ -1,11 +1,12 @@
-FROM golang:1.15-alpine
+FROM golang
 
-WORKDIR /build/
+RUN mkdir /build
+WORKDIR /build
 
-COPY /main/* /build/
+ADD ./main /build
 
-RUN cd /build && go build -o main /build
+RUN cd /build && go build
 
-EXPOSE 8080
+EXPOSE 1000
 
-CMD [ "cd /build && ./main" ]
+CMD [ "build" ]
