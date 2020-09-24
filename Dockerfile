@@ -1,4 +1,4 @@
-FROM golang
+FROM golang:latest
 
 RUN mkdir /build
 WORKDIR /build
@@ -7,6 +7,6 @@ ADD ./main /build
 
 RUN cd /build && go build
 
-EXPOSE 1000
+EXPOSE 8080
 
-CMD [ "build" ]
+ENTRYPOINT [ "./build" ]
