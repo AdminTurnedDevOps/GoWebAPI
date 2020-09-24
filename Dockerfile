@@ -1,15 +1,11 @@
-FROM golang:latest
+FROM golang:1.15-alpine
 
-ENV GO111MODULE=on
+WORKDIR /build/
 
-RUN go get github.com/AdminTurnedDevOps/GoWebAPI
+COPY /main/* /build/
 
-WORKDIR /build
-
-COPY main /build
+RUN cd /build && go build -o main /build
 
 EXPOSE 8080
-
-RUN go build -o main /build
 
 CMD [ "cd /build && ./main" ]
