@@ -20,8 +20,6 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
-    publishLocation: 'Container'
 
-- script: go build -v .
+- script: go build
   workingDirectory: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Get dependencies, then build'
