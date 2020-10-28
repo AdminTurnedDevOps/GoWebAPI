@@ -15,6 +15,11 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
 
+- task: GoTool@0
+  displayName: 'Use Go 1.15'
+  inputs:
+    version: 1.15
+
 - task: Go@0
   displayName: 'go build'
   inputs:
