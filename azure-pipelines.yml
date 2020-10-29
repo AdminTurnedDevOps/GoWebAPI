@@ -24,4 +24,4 @@ steps:
   displayName: 'go build'
   inputs:
     command: build
-    workingDirectory: '$(Build.ArtifactStagingDirectory)'
+    workingDirectory: '$(Build.ArtifactStagingDirectory)/main'
