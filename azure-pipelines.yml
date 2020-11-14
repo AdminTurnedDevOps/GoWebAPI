@@ -1,0 +1,25 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: CopyFiles@2
+  inputs:
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    
+- task: GoTool@0
+  inputs:
+    version: '1.15'
+
+- task: Go@0
+  inputs:
+    command: 'build'
+    workingDirectory: '$(Build.ArtifactStagingDirectory)/main'

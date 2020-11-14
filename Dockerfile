@@ -1,11 +1,14 @@
 FROM golang:latest
 
+RUN mkdir /build
 WORKDIR /build
 
-COPY ./main /build
+RUN export GO111MODULE=on 
+RUN go get github.com/AdminTurnedDevOps/GoWebAPI/main
+RUN cd /build && git clone https://github.com/AdminTurnedDevOps/GoWebAPI.git
+
+RUN cd /build/GoWebAPI/main && go build
 
 EXPOSE 8080
 
-RUN go build -o main .
-
-ENTRYPOINT [ "./main" ]
+ENTRYPOINT [ "/build/GoWebAPI/main/main" ]
