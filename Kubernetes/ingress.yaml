@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: apps-all
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: test.simplyanengineer.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-deployment
+            port:
+              number: 80
+  - host: simplyanengineer.com
+    http:
+      paths:
+      - path: /tests
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-deployment
+            port:
+              number: 80
