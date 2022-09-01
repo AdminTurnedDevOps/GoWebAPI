@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: gowebapi
-        image: adminturneddevops/golangwebapi:latest
+        image: adminturneddevops/gowebapi:latest
         ports:
         - containerPort: 8080
 ---
