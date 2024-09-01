@@ -36,4 +36,8 @@ jobs:
       run: docker build -t gowebapi .
       
     - name: Scan For Vuln
-      run: docker scout quickview
+      uses: docker/scout-action@v1.13.0
+      with:
+        command: quickview
+          
+
