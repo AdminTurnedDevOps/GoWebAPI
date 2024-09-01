@@ -32,12 +32,7 @@ jobs:
       run: snyk code test --org=${{ secrets.snykOrg }}
 
     - name: Build a Docker image to test for vulnerabilities
-      working-directory: .
       run: docker build -t gowebapi .
-      
-    - name: Scan For Vuln
-      uses: docker/scout-action@v1.13.0
-      with:
-        command: quickview
-          
+    - name: Snyk Container monitor
+      run: snyk container test gowebapi --file=Dockerfile
 
