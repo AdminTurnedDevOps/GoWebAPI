@@ -26,13 +26,13 @@ jobs:
       run: snyk auth ${{ secrets.snykToken }}
     
     - name: Snyk SCA Go
-      run: snyk test webappsfortesting/gowebapi --org=${{ secrets.snykOrg }}
+      run: snyk test --org=${{ secrets.snykOrg }}
 
     - name: Snyk SAST
-      run: snyk code test webappsfortesting/gowebapi --org=${{ secrets.snykOrg }}
+      run: snyk code test --org=${{ secrets.snykOrg }}
 
     - name: Build a Docker image to test for vulnerabilities
-      working-directory: webappsfortesting/gowebapi
+      working-directory: .
       run: docker build -t gowebapi .
       
     - name: Scan For Vuln
