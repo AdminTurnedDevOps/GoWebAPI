@@ -35,5 +35,5 @@ jobs:
       working-directory: webappsfortesting/gowebapi
       run: docker build -t gowebapi .
       
-    - name: Snyk Container monitor
-      run: snyk container test gowebapi --file=webappsfortesting/gowebapi/Dockerfile
+    - name: Scan For Vuln
+      run: docker scout quickview
